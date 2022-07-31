@@ -1,46 +1,32 @@
 <script lang="ts">
-import IoIosRadioButtonOff from 'svelte-icons/io/IoIosRadioButtonOff.svelte'
- import IoIosCloseCircleOutline from 'svelte-icons/io/IoIosCloseCircleOutline.svelte'
- import IoIosCheckmarkCircleOutline from 'svelte-icons/io/IoIosCheckmarkCircleOutline.svelte'
- export let checkedFrom:number = 0;
+  import PlayerMarker from './PlayerMarker.svelte';
+  export let checkedFrom:number = 0;
 </script>
 
-<div class="tile">
-  {#if checkedFrom === 1}
-    <IoIosCloseCircleOutline/>
-  {:else if checkedFrom === 2}
-    <IoIosCheckmarkCircleOutline/>
+<button class="tile" on:click>
+  {#if checkedFrom !== 0}
+    <PlayerMarker id={checkedFrom}/>
   {:else}
-  <IoIosRadioButtonOff/>
+  <div></div>
   {/if}
-</div>
+</button>
 
 <style>
-.wrapper{
-display: flex;
-align-items:strech;
-}
 .tile{
   display: flex;
   place-items: center;
-  width: 100%;
-  height: 100%;
+  width: -webkit-fill-available;
+  aspect-ratio: 1;
   background-color:#242424;
   border-radius: 8%;
+  max-height: 100px;
+  overflow: hidden
 }
-.inner-bg{
-  display:flex;
-  place-items:center;
-  width: 98%;
-  height: 98%;
-  background-color:#242424;
-  border-radius: 5px;
+
+button{
+  padding:0;
 }
-.marker{
-  display:inline-block;
-}
-svg{
-  max-width:100%;
-  max-height:100%;
+.tile > div {
+    display: flex;
 }
 </style>
