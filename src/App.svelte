@@ -1,23 +1,21 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import Counter from './lib/Counter.svelte'
-  import Matchfield from './lib/Matchfield.svelte'
+  import svelteLogo from "./assets/svelte.svg";
+  import Counter from "./lib/Counter.svelte";
+  import Matchfield from "./lib/Matchfield.svelte";
 </script>
 
 <main>
   <div>
-    <a href="https://vitejs.dev" target="_blank"> 
+    <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite Logo" />
     </a>
-    <a href="https://svelte.dev" target="_blank"> 
+    <a href="https://svelte.dev" target="_blank">
       <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
     </a>
   </div>
-  <h1>Tic Tac Toe:<br>Vite + Svelte</h1>
+  <h1>Tic Tac Toe:<br />Vite + Svelte</h1>
 
   <Matchfield />
-
-
 </main>
 
 <style>
