@@ -54,38 +54,59 @@
 
 <div id="matchfield">
   {#each tiles as tile, i}
-    <Tile 
-      checkedFrom={tile}
-      on:click={() => clickTileHandler(i)} 
-    />
+    <Tile checkedFrom={tile} on:click={() => clickTileHandler(i)} />
   {/each}
-   {#if winner !== 0}
-      <div id="interaction-blocker"></div>
-    {/if}
-    {#if winner !== 0 && winningLine === '02'}
-      <div id="winning-line-02" class="winning-line horizontal {winner?'p'+winner:null}"></div>
-    {/if}
-    {#if winner !== 0 && winningLine === '35'}
-      <div id="winning-line-35" class="winning-line horizontal {winner?'p'+winner:null}"></div>
-    {/if}
-    {#if winner !== 0 && winningLine === '68'}
-      <div id="winning-line-68" class="winning-line horizontal {winner?'p'+winner:null}"></div>
-    {/if}
-    {#if winner !== 0 && winningLine === '06'}
-      <div id="winning-line-06" class="winning-line vertical {winner?'p'+winner:null}"></div>
-    {/if}
-    {#if winner !== 0 && winningLine === '17'}
-      <div id="winning-line-17" class="winning-line vertical {winner?'p'+winner:null}"></div>
-    {/if}
-    {#if winner !== 0 && winningLine === '28'}
-      <div id="winning-line-28" class="winning-line vertical {winner?'p'+winner:null}"></div>
-    {/if}
-    {#if winner !== 0 && winningLine === '08'}
-      <div id="winning-line-08" class="winning-line vertical {winner?'p'+winner:null}"></div>
-    {/if}
-    {#if winner !== 0 && winningLine === '26'}
-      <div id="winning-line-26" class="winning-line vertical {winner?'p'+winner:null}"></div>
-    {/if}
+  {#if winner !== 0}
+    <div id="interaction-blocker" />
+  {/if}
+  {#if winner !== 0 && winningLine === "02"}
+    <div
+      id="winning-line-02"
+      class="winning-line horizontal {winner ? 'p' + winner : null}"
+    />
+  {/if}
+  {#if winner !== 0 && winningLine === "35"}
+    <div
+      id="winning-line-35"
+      class="winning-line horizontal {winner ? 'p' + winner : null}"
+    />
+  {/if}
+  {#if winner !== 0 && winningLine === "68"}
+    <div
+      id="winning-line-68"
+      class="winning-line horizontal {winner ? 'p' + winner : null}"
+    />
+  {/if}
+  {#if winner !== 0 && winningLine === "06"}
+    <div
+      id="winning-line-06"
+      class="winning-line vertical {winner ? 'p' + winner : null}"
+    />
+  {/if}
+  {#if winner !== 0 && winningLine === "17"}
+    <div
+      id="winning-line-17"
+      class="winning-line vertical {winner ? 'p' + winner : null}"
+    />
+  {/if}
+  {#if winner !== 0 && winningLine === "28"}
+    <div
+      id="winning-line-28"
+      class="winning-line vertical {winner ? 'p' + winner : null}"
+    />
+  {/if}
+  {#if winner !== 0 && winningLine === "08"}
+    <div
+      id="winning-line-08"
+      class="winning-line vertical {winner ? 'p' + winner : null}"
+    />
+  {/if}
+  {#if winner !== 0 && winningLine === "26"}
+    <div
+      id="winning-line-26"
+      class="winning-line vertical {winner ? 'p' + winner : null}"
+    />
+  {/if}
 </div>
 <pre>
 winner: {winner}
@@ -121,7 +142,7 @@ winner: {winner}
     position: absolute;
     width: 100%;
     height: 100%;
-}
+  }
 
   .game-state {
     display: flex;
@@ -134,56 +155,60 @@ winner: {winner}
     display: inline-block;
     max-width: 2em;
   }
-.winning-line{
-position: absolute;
-border-radius: 10px;
-box-shadow: 0px 0px 5px 0px;
-}
-.winning-line.p1{
-background: #ffce26;
-}
-.winning-line.p2{
-background: #4ac4ff;
-}
-.winning-line.horizontal{
-  height: 3%;
-  width: 94%;
-}
-.winning-line.vertical{
-  height: 94%;
-  width: 3%;
-}
+  .winning-line {
+    position: absolute;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px;
+    height: 3%;
+    width: 3%;
+  }
+  .winning-line.p1 {
+    background: #ffce26;
+  }
+  .winning-line.p2 {
+    background: #4ac4ff;
+  }
+  .winning-line.horizontal {
+    height: 3%;
+    width: 94%;
+    transition: width 2s;
+  }
+  .winning-line.vertical {
+    height: 94%;
+    width: 3%;
+    transition: height 2s;
+  }
 
   #winning-line-02 {
     top: 15.8%;
-}
+  }
   #winning-line-35 {
     top: 48.7%;
-}
+  }
   #winning-line-68 {
     top: 81%;
-}
+  }
   #winning-line-06 {
-   left: 15.8%;
-}
+    left: 15.8%;
+  }
   #winning-line-17 {
-   left: 48.7%;
-}
+    left: 48.7%;
+  }
   #winning-line-28 {
-   left:81%;
-}
+    left: 81%;
+  }
   #winning-line-08 {
     top: -12%;
     left: 49%;
     transform-origin: center;
     transform: rotate(-45deg);
     height: 124%;
-}
+  }
   #winning-line-26 {
-  top: -12%;
+    top: -12%;
     left: 49%;
     transform-origin: center;
     transform: rotate(45deg);
     height: 124%;
-}
+  }
 </style>
