@@ -5,16 +5,10 @@
   let activePlayer: number = 1;
   let winner = 0;
   let winningLine = "";
-  let isGameFinished: boolean = false;
   function clickTileHandler(tileIndex: number) {
     tiles[tileIndex] = activePlayer;
     activePlayer = activePlayer === 1 ? 2 : 1;
-    checkIfGameFinished();
-  }
-  function checkIfGameFinished(): void {
     checkWhichPlayerFillOneRow();
-    isGameFinished =
-      winner !== 0 || tiles.filter((tile) => tile === 0).length === 0;
   }
   function checkWhichPlayerFillOneRow(): void {
     const allEqual = (arr) => arr.every((val) => val === arr[0]);
@@ -59,60 +53,19 @@
   {#if winner !== 0}
     <div id="interaction-blocker" />
   {/if}
-  {#if winner !== 0 && winningLine === "02"}
+  {#if winner !== 0 && winningLine !== ""}
     <div
-      id="winning-line-02"
-      class="winning-line horizontal {winner ? 'p' + winner : null}"
-    />
-  {/if}
-  {#if winner !== 0 && winningLine === "35"}
-    <div
-      id="winning-line-35"
-      class="winning-line horizontal {winner ? 'p' + winner : null}"
-    />
-  {/if}
-  {#if winner !== 0 && winningLine === "68"}
-    <div
-      id="winning-line-68"
-      class="winning-line horizontal {winner ? 'p' + winner : null}"
-    />
-  {/if}
-  {#if winner !== 0 && winningLine === "06"}
-    <div
-      id="winning-line-06"
-      class="winning-line vertical {winner ? 'p' + winner : null}"
-    />
-  {/if}
-  {#if winner !== 0 && winningLine === "17"}
-    <div
-      id="winning-line-17"
-      class="winning-line vertical {winner ? 'p' + winner : null}"
-    />
-  {/if}
-  {#if winner !== 0 && winningLine === "28"}
-    <div
-      id="winning-line-28"
-      class="winning-line vertical {winner ? 'p' + winner : null}"
-    />
-  {/if}
-  {#if winner !== 0 && winningLine === "08"}
-    <div
-      id="winning-line-08"
-      class="winning-line vertical {winner ? 'p' + winner : null}"
-    />
-  {/if}
-  {#if winner !== 0 && winningLine === "26"}
-    <div
-      id="winning-line-26"
-      class="winning-line vertical {winner ? 'p' + winner : null}"
+      id="winning-line-{winningLine}"
+      class="winning-line 
+      {['02', '35', '68'].includes(winningLine) ? 'horizontal' : null}
+      {['06', '17', '28', '08', '26'].includes(winningLine) ? 'vertical' : null}
+      {winner ? 'p' + winner : null}
+      "
     />
   {/if}
 </div>
-<pre>
-winner: {winner}
-</pre>
 <div class="game-state">
-  {#if !isGameFinished}
+  {#if winner === 0}
     <h2>Active Player:</h2>
     <div class="player-marker">
       <PlayerMarker id={activePlayer} />
