@@ -112,8 +112,9 @@
     position: absolute;
     border-radius: 10px;
     box-shadow: 0px 0px 5px 0px;
-    height: 3%;
-    width: 3%;
+    // TODO: Animation
+    //height: 3%;
+    //width: 3%;
   }
   .winning-line.p1 {
     background: #ffce26;
@@ -124,12 +125,12 @@
   .winning-line.horizontal {
     height: 3%;
     width: 94%;
-    transition: width 2s;
+    //transition: width 2s;
   }
   .winning-line.vertical {
     height: 94%;
     width: 3%;
-    transition: height 2s;
+    //transition: height 2s;
   }
 
   #winning-line-02 {
